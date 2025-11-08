@@ -44,7 +44,7 @@ export default function AboutPage() {
     "Debasish Kashyab", 
     "Suvradeep Dutta",
     "Rishav Kumar Singh",
-    "Neelam Chakraborty"
+    "Sankhyahrick Swami"
   ]
 
   const activities = [
@@ -156,8 +156,34 @@ export default function AboutPage() {
             Meet Our <span className="text-primary">Committee</span>
           </h2>
 
+          {/* Adarsh Pradhan - Centered at the top */}
+          <div
+            className="rounded-xl p-8 space-y-4 flex flex-col items-center text-center mx-auto mb-12 max-w-sm"
+            style={{
+              background: "rgba(18, 18, 18, 0.7)",
+              backdropFilter: "blur(10px)",
+              border: "1px solid rgba(212, 175, 55, 0.1)",
+              transition: "all 0.3s ease",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = "rgba(18, 18, 18, 0.85)"
+              e.currentTarget.style.borderColor = "rgba(212, 175, 55, 0.3)"
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = "rgba(18, 18, 18, 0.7)"
+              e.currentTarget.style.borderColor = "rgba(212, 175, 55, 0.1)"
+            }}
+          >
+            <div className="text-5xl text-primary/70">
+              <UserCheck size={48} />
+            </div>
+            <h3 className="text-xl font-bold text-foreground">Adarsh Pradhan</h3>
+            <p className="text-primary font-semibold text-sm">Teacher Coordinator</p>
+            <p className="text-muted-foreground text-sm leading-relaxed">Faculty advisor guiding the club's academic direction and initiatives</p>
+          </div>
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {committee.map((member, index) => (
+            {committee.filter(member => member.name !== "Adarsh Pradhan").map((member, index) => (
               <div
                 key={index}
                 className="rounded-xl p-8 space-y-4 flex flex-col items-center text-center"

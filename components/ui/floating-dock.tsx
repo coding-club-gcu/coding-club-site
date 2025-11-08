@@ -31,6 +31,8 @@ export default function FloatingDock({
   );
 }
 
+import Link from "next/link";
+
 // ---------------- Mobile Dock ----------------
 const FloatingDockMobile = ({ items, className }: { items: DockItem[]; className?: string }) => {
   const [open, setOpen] = useState(false);
@@ -44,16 +46,16 @@ const FloatingDockMobile = ({ items, className }: { items: DockItem[]; className
             className="absolute bottom-full mb-2 flex flex-col gap-2 items-end"
           >
             {items.map((item, idx) => (
-              <motion.a
-                key={item.title}
-                href={item.href}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 10, transition: { delay: idx * 0.05 } }}
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-50 dark:bg-neutral-900 hover:scale-110 transition-all"
-              >
-                {item.icon}
-              </motion.a>
+              <Link key={item.title} href={item.href} passHref>
+                <motion.a
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10, transition: { delay: idx * 0.05 } }}
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-50 dark:bg-neutral-900 hover:scale-110 transition-all"
+                >
+                  {item.icon}
+                </motion.a>
+              </Link>
             ))}
           </motion.div>
         )}
@@ -106,7 +108,7 @@ function IconContainer({ mouseX, title, icon, href }: DockItem & { mouseX: Motio
   const [hovered, setHovered] = useState(false);
 
   return (
-    <a href={href}>
+    <Link href={href} passHref>
       <motion.div
         ref={ref}
         style={{ width, height }}
@@ -130,13 +132,13 @@ function IconContainer({ mouseX, title, icon, href }: DockItem & { mouseX: Motio
           {icon}
         </motion.div>
       </motion.div>
-    </a>
+    </Link>
   );
 }
 
 // ---------------- Default Dock Items ----------------
 export const defaultDockItems: DockItem[] = [
-  { title: "Home", icon: <Home />, href: "/" },
+  { title: "Home", icon: <Home />, href: "/home" },
   { title: "Activities", icon: <Folder />, href: "/activities" },
   { title: "Achievements", icon: <Trophy />, href: "/achievements" },
   { title: "Blog", icon: <Mail />, href: "/blog" },
