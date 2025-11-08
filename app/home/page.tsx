@@ -17,7 +17,7 @@ export default function HeroSection() {
   }
 
   return (
-    <div style={{ position: 'relative', overflow: 'hidden' }} className="min-h-screen">
+    <div style={{ position: 'relative', overflow: 'hidden' }} className="min-h-screen max-h-screen">
       <div className="absolute flex justify-between items-center top-0 w-full h-24 md:h-48 z-50 px-4 sm:px-8">
         <div className="relative w-32 h-full">
           <Image src="/Logo-White.png" alt="Codenix Logo" fill style={{ objectFit: 'contain' }}/>
