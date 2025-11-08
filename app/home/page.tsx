@@ -3,7 +3,7 @@ import { useTextScramble } from "@/hooks/use-text-scramble"
 import Ballpit from "@/components/hero-background.tsx"
 import { useRouter } from "next/navigation"
 import FloatingDock, { defaultDockItems } from "@/components/ui/floating-dock"
-
+import Image from "next/image"
 export default function HeroSection() {
   const { displayText: scrambledCodenix } = useTextScramble("Codénix", 60)
   const router = useRouter()
@@ -18,7 +18,15 @@ export default function HeroSection() {
 
   return (
     <div style={{ position: 'relative', overflow: 'hidden' }} className="min-h-screen">
-      <div className="hidden md:block h-full">
+      <div className="absolute flex justify-between items-center top-0 w-full h-24 md:h-48 z-50 px-4 sm:px-8">
+        <div className="relative w-32 h-full">
+          <Image src="/Logo-White.png" alt="Codenix Logo" fill style={{ objectFit: 'contain' }}/>
+        </div>
+        <div className="relative w-32 h-full">
+          <Image src="/GCU-Logo-Normal.png" alt="GCU Logo" fill style={{ objectFit: 'contain' }}/>
+        </div>
+      </div>
+      <div className="hidden md:block h-full z-0 pointer-events-none">
         <Ballpit
           count={100}
           gravity={0.01}
@@ -31,7 +39,7 @@ export default function HeroSection() {
           maxSize={0.8}
         />
       </div>
-      <div className="md:hidden h-screen">
+      <div className="md:hidden h-screen z-0 pointer-events-none">
         <Ballpit
           count={100}
           gravity={0.01}
@@ -66,7 +74,7 @@ export default function HeroSection() {
           </button>
         </div>
       </div>
-      <FloatingDock items={defaultDockItems} />
+      <FloatingDock items={defaultDockItems} className="z-40" />
     </div>
   )
 }

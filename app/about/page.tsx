@@ -74,7 +74,8 @@ export default function AboutPage() {
     <main className="min-h-screen bg-background">
       <section className="pt-20 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center gap-4 mb-12">
+          <div className="flex flex-col  justify-between md:flex-row items-center gap-4 mb-12">
+            <div className="md:flex gap-4 md:gap-1 justify-center items-center">
             <div className="relative w-32 h-32">
               <Image 
                 src="/Logo-White.png" 
@@ -83,6 +84,7 @@ export default function AboutPage() {
                 className="object-contain"
               />
             </div>
+            
             <div>
               <h1 className="text-5xl font-bold mb-2 text-foreground">
                 About <span className="text-gradient-gold animate-gradient-x">Codénix</span>
@@ -90,6 +92,15 @@ export default function AboutPage() {
               <p className="text-lg text-muted-foreground">
                 Official Coding Club of Girijananda Chowdhury University
               </p>
+            </div>
+            </div>
+            <div className="relative w-32 h-32">
+            <Image
+              src="/GCU-Logo-Normal.png"
+              alt="gcu logo"
+              fill
+              className="object-contain"
+            />
             </div>
           </div>
 

@@ -32,6 +32,7 @@ export default function FloatingDock({
 }
 
 import Link from "next/link";
+const MotionLink = motion(Link);
 
 // ---------------- Mobile Dock ----------------
 const FloatingDockMobile = ({ items, className }: { items: DockItem[]; className?: string }) => {
@@ -46,16 +47,16 @@ const FloatingDockMobile = ({ items, className }: { items: DockItem[]; className
             className="absolute bottom-full mb-2 flex flex-col gap-2 items-end"
           >
             {items.map((item, idx) => (
-              <Link key={item.title} href={item.href} passHref>
-                <motion.a
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 10, transition: { delay: idx * 0.05 } }}
-                  className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-50 dark:bg-neutral-900 hover:scale-110 transition-all"
-                >
-                  {item.icon}
-                </motion.a>
-              </Link>
+              <MotionLink
+                key={item.title}
+                href={item.href}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10, transition: { delay: idx * 0.05 } }}
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-50 dark:bg-neutral-900 hover:scale-110 transition-all"
+              >
+                {item.icon}
+              </MotionLink>
             ))}
           </motion.div>
         )}
