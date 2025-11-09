@@ -2,7 +2,6 @@
 import { useTextScramble } from "@/hooks/use-text-scramble"
 import Ballpit from "@/components/hero-background.tsx"
 import { useRouter } from "next/navigation"
-import FloatingDock, { defaultDockItems } from "@/components/ui/floating-dock"
 import Image from "next/image"
 import MorphingRectangle from "@/components/morphing-rectangle"
 
@@ -20,19 +19,19 @@ export default function HeroSection() {
 
   return (
     <div style={{ position: 'relative', overflow: 'hidden' }} className="min-h-screen max-h-screen">
-      <div className="absolute flex justify-between items-center top-0 w-full h-24 md:h-48 z-50 px-4 sm:px-8">
-        <div className="relative w-32 h-full scale-150">
+      <div className="absolute md:p-11 flex justify-between items-center top-0 w-full h-24 md:h-48 z-50 px-4 sm:px-8">
+        <div className="relative w-32 md:h-full h-10 scale-150">
           <Image src="/Logo-White.png" alt="Codenix Logo" fill style={{ objectFit: 'contain' }}/>
         </div>
-        <div className="relative w-32 h-full">
+        <div className="relative w-32 md:h-full h-10">
           <Image src="/GCU-Logo-Normal.png" alt="GCU Logo" fill style={{ objectFit: 'contain' }}/>
         </div>
       </div>
-      <div className="hidden md:block h-full z-0 pointer-events-none">
+      <div className="hidden md:block h-screen z-0 pointer-events-none">
         <Ballpit
           count={20}
           maxVelocity={0.09}
-          gravity={0.1}
+          gravity={0}
           friction={1}
           wallBounce={1}
           ambientIntensity={1}
@@ -46,7 +45,7 @@ export default function HeroSection() {
         <Ballpit
           count={20}
           maxVelocity={0.09}
-          gravity={0.01}
+          gravity={0}
           friction={1}
           wallBounce={1}
           ambientIntensity={1}
@@ -82,7 +81,6 @@ export default function HeroSection() {
           </div>
         </MorphingRectangle>
       </div>
-      <FloatingDock items={defaultDockItems} className="z-40" />
     </div>
   )
 }
