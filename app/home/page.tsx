@@ -24,7 +24,7 @@ export default function HeroSection() {
           <Image src="/Logo-White.png" alt="Codenix Logo" fill style={{ objectFit: 'contain' }}/>
         </div>
         <div className="relative w-32 md:h-full h-10">
-          <Image src="/GCU-Logo-Normal.png" alt="GCU Logo" fill style={{ objectFit: 'contain' }}/>
+          <Image src="/GCU-Logo-2.png" alt="GCU Logo" fill style={{ objectFit: 'contain' }}/>
         </div>
       </div>
       <div className="hidden md:block h-screen z-0 pointer-events-none">
