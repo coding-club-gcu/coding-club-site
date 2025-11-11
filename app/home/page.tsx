@@ -1,6 +1,6 @@
 "use client"
 import { useTextScramble } from "@/hooks/use-text-scramble"
-import Ballpit from "@/components/hero-background.tsx"
+import Ballpit from "@/components/hero-background"
 import { useRouter } from "next/navigation"
 import Image from "next/image"
 import MorphingRectangle from "@/components/morphing-rectangle"
