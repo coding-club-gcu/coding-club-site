@@ -53,7 +53,7 @@ export default function BlogModal({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="max-w-4xl min-w-[50%] max-h-[50%] overflow-y-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]" >
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold text-foreground">
             {post.title}

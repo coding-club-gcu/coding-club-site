@@ -5,6 +5,8 @@ import { IconLayoutNavbarCollapse } from "@tabler/icons-react";
 import { motion, useMotionValue, useSpring, useTransform, AnimatePresence, MotionValue } from "framer-motion";
 import { useRef, useState } from "react";
 import { Home, Folder, Trophy, Mail, User } from "lucide-react";
+import Link from "next/link";
+import { useMobileMenu } from "@/context/MobileMenuContext";
 
 // ---------------- Dock Item Type ----------------
 export type DockItem = {
@@ -31,20 +33,22 @@ export default function FloatingDock({
   );
 }
 
+const MotionLink = motion(Link);
+
 // ---------------- Mobile Dock ----------------
 const FloatingDockMobile = ({ items, className }: { items: DockItem[]; className?: string }) => {
-  const [open, setOpen] = useState(false);
+  const { isMenuOpen, toggleMenu } = useMobileMenu();
 
   return (
     <div className={cn("fixed bottom-6 right-6 md:hidden z-40", className)}>
       <AnimatePresence>
-        {open && (
+        {isMenuOpen && (
           <motion.div
             layoutId="dock-mobile"
             className="absolute bottom-full mb-2 flex flex-col gap-2 items-end"
           >
             {items.map((item, idx) => (
-              <motion.a
+              <MotionLink
                 key={item.title}
                 href={item.href}
                 initial={{ opacity: 0, y: 10 }}
@@ -53,14 +57,14 @@ const FloatingDockMobile = ({ items, className }: { items: DockItem[]; className
                 className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-50 dark:bg-neutral-900 hover:scale-110 transition-all"
               >
                 {item.icon}
-              </motion.a>
+              </MotionLink>
             ))}
           </motion.div>
         )}
       </AnimatePresence>
 
       <button
-        onClick={() => setOpen(!open)}
+        onClick={toggleMenu}
         className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-50 dark:bg-neutral-800 hover:scale-110 transition-all"
       >
         <IconLayoutNavbarCollapse className="h-5 w-5 text-neutral-500 dark:text-neutral-400" />
@@ -106,7 +110,7 @@ function IconContainer({ mouseX, title, icon, href }: DockItem & { mouseX: Motio
   const [hovered, setHovered] = useState(false);
 
   return (
-    <a href={href}>
+    <Link href={href} passHref>
       <motion.div
         ref={ref}
         style={{ width, height }}
@@ -130,13 +134,13 @@ function IconContainer({ mouseX, title, icon, href }: DockItem & { mouseX: Motio
           {icon}
         </motion.div>
       </motion.div>
-    </a>
+    </Link>
   );
-}
+};
 
 // ---------------- Default Dock Items ----------------
 export const defaultDockItems: DockItem[] = [
-  { title: "Home", icon: <Home />, href: "/" },
+  { title: "Home", icon: <Home />, href: "/home" },
   { title: "Activities", icon: <Folder />, href: "/activities" },
   { title: "Achievements", icon: <Trophy />, href: "/achievements" },
   { title: "Blog", icon: <Mail />, href: "/blog" },

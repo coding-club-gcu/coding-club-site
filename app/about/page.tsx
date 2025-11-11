@@ -44,7 +44,7 @@ export default function AboutPage() {
     "Debasish Kashyab", 
     "Suvradeep Dutta",
     "Rishav Kumar Singh",
-    "Neelam Chakraborty"
+    "Sankhyahrick Swami"
   ]
 
   const activities = [
@@ -74,7 +74,8 @@ export default function AboutPage() {
     <main className="min-h-screen bg-background">
       <section className="pt-20 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center gap-4 mb-12">
+          <div className="flex flex-col  justify-between md:flex-row items-center gap-4 mb-12">
+            <div className="md:flex gap-4 md:gap-1 justify-center items-center">
             <div className="relative w-32 h-32">
               <Image 
                 src="/Logo-White.png" 
@@ -83,6 +84,7 @@ export default function AboutPage() {
                 className="object-contain"
               />
             </div>
+            
             <div>
               <h1 className="text-5xl font-bold mb-2 text-foreground">
                 About <span className="text-gradient-gold animate-gradient-x">Codénix</span>
@@ -90,6 +92,15 @@ export default function AboutPage() {
               <p className="text-lg text-muted-foreground">
                 Official Coding Club of Girijananda Chowdhury University
               </p>
+            </div>
+            </div>
+            <div className="relative w-32 h-32">
+            <Image
+              src="/GCU-Logo-Normal.png"
+              alt="gcu logo"
+              fill
+              className="object-contain"
+            />
             </div>
           </div>
 
@@ -156,8 +167,34 @@ export default function AboutPage() {
             Meet Our <span className="text-primary">Committee</span>
           </h2>
 
+          {/* Adarsh Pradhan - Centered at the top */}
+          <div
+            className="rounded-xl p-8 space-y-4 flex flex-col items-center text-center mx-auto mb-12 max-w-sm"
+            style={{
+              background: "rgba(18, 18, 18, 0.7)",
+              backdropFilter: "blur(10px)",
+              border: "1px solid rgba(212, 175, 55, 0.1)",
+              transition: "all 0.3s ease",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = "rgba(18, 18, 18, 0.85)"
+              e.currentTarget.style.borderColor = "rgba(212, 175, 55, 0.3)"
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = "rgba(18, 18, 18, 0.7)"
+              e.currentTarget.style.borderColor = "rgba(212, 175, 55, 0.1)"
+            }}
+          >
+            <div className="text-5xl text-primary/70">
+              <UserCheck size={48} />
+            </div>
+            <h3 className="text-xl font-bold text-foreground">Adarsh Pradhan</h3>
+            <p className="text-primary font-semibold text-sm">Teacher Coordinator</p>
+            <p className="text-muted-foreground text-sm leading-relaxed">Faculty advisor guiding the club's academic direction and initiatives</p>
+          </div>
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {committee.map((member, index) => (
+            {committee.filter(member => member.name !== "Adarsh Pradhan").map((member, index) => (
               <div
                 key={index}
                 className="rounded-xl p-8 space-y-4 flex flex-col items-center text-center"
