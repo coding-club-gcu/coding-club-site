@@ -1,11 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  images: {
-    unoptimized: true,
-  },
-}
+  output: 'export',
+  basePath: '/coding-club-site', // Only if deploying to a subdirectory
+  trailingSlash: true,
+};
 
-export default nextConfig
+export default nextConfig;
